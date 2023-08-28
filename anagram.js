@@ -23,7 +23,7 @@ const checkAnagrams = function(str1, str2){
 
 console.log(checkAnagrams("test","estt"));
 
-//Approach 2 : by creating two maps
+//Approach 2 : by creating two maps,  time taken: 5 min
 const checkAnagrams2 = function(str1, str2){
 	let strMap1 = {};
   let strMap2 = {};
