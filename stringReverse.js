@@ -15,3 +15,10 @@ const reverseString = function(str){
 }
 
 console.log(reverseString(str));
+
+//using map
+let sen = "hello good morning";
+console.log(sen.split(" ").map(word => word.split("").reverse().join("")).join(" "));
+
+//using spread operator
+console.log([...sen].reverse().join(""));
