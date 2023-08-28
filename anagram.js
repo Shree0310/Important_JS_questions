@@ -12,13 +12,8 @@ const checkAnagrams = function(str1, str2){
   let strArr1 = str1.split("");
   let strArr2 = str2.split("");
   
-  let sortStr1 = strArr1.sort();
-  let sortStr2 = strArr2.sort();
-  console.log(sortStr1);
-  console.log(sortStr2);
-
   for(let i =0;i<n1;i++){
-  	if(sortStr1[i]!=sortStr2[i]){
+  	if(strArr1.sort()[i]!=strArr2.sort()[i]){
     	return false;
     }
   }
@@ -27,3 +22,37 @@ const checkAnagrams = function(str1, str2){
 }
 
 console.log(checkAnagrams("test","estt"));
+
+//Approach 2 : by creating two maps
+const checkAnagrams2 = function(str1, str2){
+	let strMap1 = {};
+  let strMap2 = {};
+  
+  for(let i=0; i<str1.length; i++){
+  	if(strMap1[str1[i]]){
+    	strMap1[str1[i]]++;
+    }
+    else{
+    	strMap1[str1[i]] = 1;
+    }
+  }
+  
+  for(let i=0; i<str2.length; i++){
+  	if(strMap2[str2[i]]){
+    	strMap2[str2[i]]++;
+    }
+    else{
+    	strMap2[str2[i]] = 1;
+    }
+  }
+  
+  for(let key in strMap1){
+  	if(strMap1[key]!=strMap2[key]){
+    	return false;
+    }
+  }
+  return true;
+  
+  
+}
+console.log(checkAnagrams2("test","estt"));
