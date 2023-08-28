@@ -1,4 +1,4 @@
-
+//Check if the given string i spallindrome
 function pallindrome2(str){
 	let strArr = str.split("");
   let n = strArr.length;
