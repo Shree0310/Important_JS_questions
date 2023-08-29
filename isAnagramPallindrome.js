@@ -10,7 +10,7 @@ var isAngrmPldrm = function(str){
     }
   }
   console.log(strMap);
-  // Traverse the count array and if the count array has more than one odd values, return false. Otherwise, return true.
+  // Traverse the str map and if the count on map has more than one odd values, return false. Otherwise, return true.
   let oddCount =0;
   for(let key in strMap){
    console.log(key);
