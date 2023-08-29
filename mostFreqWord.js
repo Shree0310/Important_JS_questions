@@ -24,3 +24,5 @@ var mostFreqWord = function(para){
   return res;
 }
 console.log(mostFreqWord(paragraph));
+
+//Given an array of strings words and an integer k, return the k most frequent strings.
