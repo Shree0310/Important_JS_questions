@@ -19,3 +19,6 @@ function flattenArr(arr){
 }
 
 console.log(flattenArr(deepArr));
+
+//using flat()
+console.log(deepArr.flat(4));
