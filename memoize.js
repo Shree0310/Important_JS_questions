@@ -30,3 +30,20 @@ console.log(cache);
 
 const efficient = memoize(fib);
 console.log(efficient(5));
+
+//Approach 2 storing in an array and caching in the same function
+const fib = (n, prevValues = [])=>{
+if(prevValues[n]!= null){
+	return prevValues[n];
+}
+let result;
+  if(n<=2){
+    result= 1;
+  }
+	else {
+  	result =  fib(n-2, prevValues) + fib(n-1, prevValues);
+  }
+  prevValues[n] = result;
+  return result;
+}
+console.log(fib(50));
