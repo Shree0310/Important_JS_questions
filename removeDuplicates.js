@@ -19,3 +19,15 @@ function removeDuplicates2(arr){
   return unique;
 }
 console.log(removeDuplicates2(newArray));
+
+//remove duplicates based on ids
+const arr2 = [{id:1, name:"Ram"}, {id:2, name:"Sham"}, {id:1, name:"Sham"}];
+const ids = arr2.map(o=>o.id);
+console.log(ids);
+const names = arr2.map(o=>o.name);
+console.log(names);
+
+const removeDuplicates = arr2.filter(({id},index) =>!ids.includes(id,index+1 ));
+
+console.log(removeDuplicates);
+
