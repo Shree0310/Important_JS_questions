@@ -1,24 +1,30 @@
 //flatten an array of any depth
 //Using recursion
-let deepArr = [1,[2,[3,[4,[5]]]]];
-function flattenArr(arr){
-	if(arr.length==1){
-  	return arr;
-  }
-  let flatArr=[];
-  for(let i=0;i<arr.length;i++){
-  	if(typeof(arr[i])==="object"){
-    	let x = flattenArr(arr[i]);
-      flatArr = flatArr.concat(x);
+function flattenArray (nestedArr, depth=Infinity ){
+	//result  flat array
+  let result = [];
+  
+  //A helper function to flatten the array recursively
+  function flattenHelper(arr, currDepth){
+  	for(let i=0;i<arr.length;i++){
+    	let current;
+      current = arr[i];
+      //check if current element is an array and we havent reached 
+      //the max depth
+      if(Array.isArray(current) && currDepth<depth ){
+      	flattenHelper(current, currDepth+1);
+      }
+      else{
+      result.push(current);
+      }
     }
-    else{
-    	flatArr.push(arr[i]);
-    }
   }
-  return flatArr;
+  
+  //start flattening recursively from depth 0
+  flattenHelper(nestedArr, 0);
+  return result;
 }
 
-console.log(flattenArr(deepArr));
+const nestedArray1 = [1, [2, 3], [4, [5, 6]]];
+console.log("Fully flattened:", flattenArray(nestedArray1));
 
-//using flat()
-console.log(deepArr.flat(4));
