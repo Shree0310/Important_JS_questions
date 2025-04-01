@@ -1,4 +1,4 @@
- * Finds the oldest person from an array of user objects
+ //Finds the oldest person from an array of user objects
 
 const users = [
   { name: 'Alice', age: 32, location: 'New York' },
