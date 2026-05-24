@@ -1,0 +1,89 @@
+//Promises are used to handle async operations in javascript
+
+const cart = ["shoes", "clothes", "mobile"];
+
+createOrder(cart) //returns orderId
+proceedToPayment(orderId);
+
+//createOrder & proceedToPayment are asynchronous and depend on each other
+
+//In case of callbacks that where used before promises, these functions are wrapped in a callback function
+function() {
+  proceedToPayment(orderId);
+
+}
+
+//and pass this to createOrder API
+createOrder(cart, function() {
+  proceedToPayment(orderId);
+}) 
+//Now it becomes the responsibility of createOrder entirely which leads to inversion of control
+//createOrder function might not ever call the callback function, or might even calls it twice because we dont know
+//We have given responsibility og=f our payment proceedToPayment to something else createOrder, which we are not aware
+
+// In order to handle these situations we use promises
+//So we design our createOrder API in such a way that it returns a promise
+//promise is an empty object
+
+const promise = createOrder(cart);
+
+//The program will goon excecuting and automatically the promise data will get filled at some point asynchronously
+//Now we will attach a callback to this promise object
+
+promise.then(cart,function() {
+  proceedToPayment(orderId);
+});
+
+//or simply
+createOrder.then(cart,function() {
+  proceedToPayment(orderId);
+});
+
+//when we data in promise this callback function is called automatically
+//Initially we were passing this callback function to another function and here we are attaching this callback function to a promise object
+//This gives us a confidence that as soon as there is data in promise it will call the attached callback
+//And we have control over code since we are not passing it to an external function that we might or might not be aware of
+
+const GITHUB_API = "https://api.github.com/users/Shree0310"
+
+//The fetch api in github returns a promise
+const user = fetch(GITHUB_API);
+//There is promise state and result, initially the promise is in pending state then changes to fulfilled state
+
+user.then(function(data){
+  console.log(data);
+})
+
+//Only three states are there in the promise: pending, fullfiled and rejected
+//promise is immutable, you can pass where ever you want
+//Definition for interviews: It is a placeholder which will be filled later with a value, untill be receive a value from an asynchronous operation
+//In mdn doc: Prmose is an object which represents eventual completion or failure of an asynchronous operation
+
+showOrderSummary(paymentInfo);
+updateWalletBallance();
+
+createOrder(cart, function(orderId) {
+  proceedToPayment(orderId, function(paymentInfo){
+    showOrderSummary(paymentInfo, function(){
+      updateWalletBallance();
+    });
+  });
+}) 
+//This is known as callback hell
+
+//This issue can be resolved using promises
+createOrder.then(cart)
+  .then(function(orderId){
+  return proceedToPayment(orderId);
+  })
+  .then(function(paymentInfo){
+   return showOrderSummary(paymentInfo);
+  })
+  .then(function(paymentInfo){
+    return updateWalletBallance(paymentInfo);
+  })
+
+//This is known as promise chaining
+
+
+
