@@ -1,15 +1,21 @@
 //reverse an Integer
-function reverseInt(num){
-	let revNum = 0;
-  let digit;
-  while (num>0){
-  	 digit = num%10;
-     revNum = revNum*10 + digit;
-     num = Math.floor(num/10);
-    
-  }
-  return revNum;
+const reverse = (n) => {
+    const nCopy = n;
+    n = Math.abs(n);
+    let rev = 0;
+    while (n > 0) {
+        const rem = n % 10;
+        rev = rev * 10 + rem;
+        n = Math.floor(n / 10);
+    }
+    let limit = Math.pow(2, 31);
+    //can also be written as 
+    //limit = 2**31
+    if (rev < -limit || rev > limit) {
+        return 0;
+    }
+    return (nCopy < 0) ? -rev : rev;
 }
 
-let num3 = 87980933788;
-console.log(reverseInt(num3));
+const m = -879;
+console.log(reverse(m));
