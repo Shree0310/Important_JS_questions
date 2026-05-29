@@ -31,7 +31,7 @@ const removeDuplicates = arr2.filter(({id},index) =>!ids.includes(id,index+1 ));
 
 console.log(removeDuplicates);
 
-//Remove duplicates from a sorted Array
+//Remove duplicates from a sorted Array => refer Leetcode
 const removeDups = (arr) => {
     let x = 0;
     for (let i = 0; i < arr.length; i++) {
