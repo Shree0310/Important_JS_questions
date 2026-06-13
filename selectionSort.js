@@ -1,4 +1,4 @@
-function insertionSort(arr) {
+function selectionSort(arr) {
     let n = arr.length;
     for (let i = 0; i < n - 1; i++) {
         let min = i;
@@ -16,4 +16,4 @@ function insertionSort(arr) {
     return arr;
 }
 let arr = [4, 9, 1, 0, 2];
-console.log(insertionSort(arr));
+console.log(selectionSort(arr));
