@@ -74,3 +74,27 @@ var maxFreqSum = function(s) {
     }
     return maxVowels + maxConsonants;
 };
+
+//Another way of writing this code
+var maxFreqSum = function(s) {
+    let charMap = {};
+    //Fill the map with the chars count
+    for(let i =0; i<s.length; i++){
+        charMap[s[i]] = !charMap[s[i]] ? 1 : ++charMap[s[i]];
+    }
+
+    //getting the max count of vowels and consonants
+    let maxVowels = 0;
+    let maxConsonants = 0;
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    let mapKeys = Object.keys(charMap);
+    for(let i=0; i<mapKeys.length; i++){
+        if(vowels.includes(mapKeys[i])){
+            maxVowels = Math.max(maxVowels, charMap[mapKeys[i]]);
+        }
+        else{
+            maxConsonants = Math.max(maxConsonants, charMap[mapKeys[i]]);
+        }
+    }
+    return maxVowels + maxConsonants;
+};
